@@ -12,16 +12,18 @@
           box-sizing: border-box;
         }
 
+        <!-- padding can be removed if needed -->
         .wrapper {
-          padding: 60px;
+          padding: 60px; 
         }
 
         .social-image {
           width: 100%;
           background: transparent;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          <!-- font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
             Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-            'Segoe UI Symbol';
+            'Segoe UI Symbol'; -->
+          font-family: "Google Sans", Roboto, arial, sans-serif;
           line-height: 1;
           text-align: center;
         }
@@ -29,6 +31,13 @@
         .main-bg__container {
           display: grid;
           grid-template-columns: 1fr 1fr;
+          background-image: url('bg-map_only_2.png');
+          background-size: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: #ffffff;
+          border-radius: 25px;
         }
 
         .social-image__html {
@@ -36,6 +45,7 @@
           height: 100%;
           justify-content: flex-start;
           align-items: flex-start;
+          position: relative;
         }
 
         .social-image__text {
@@ -49,6 +59,32 @@
           width: 100%;
         }
 
+        .social-image__logo {
+          position: absolute;
+          bottom: 0px;
+          height: auto;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 45px;
+        }
+
+        .social-image__logo img {
+          height: 45px;
+          width: auto;
+        }
+
+        h1.social-image__title.title_one {
+          color: #99bbc2;
+          font-weight: 600;
+          font-size: 40px;
+        }
+        h1.social-image__title.title_two {
+          color: #ffffff;
+          font-weight: 800;
+          font-size: 55px;
+        }
+        
         .social-image__title {
           font-size: 56px;
           line-height: 68px;
@@ -64,6 +100,24 @@
           outline: none;
           letter-spacing: -0.0125em;
         }
+
+        .bg-map_container {
+          border-radius: 0 23px 23px 0;
+          overflow: hidden;
+        }
+        .bg-map {
+          background-image: url('modified_map.png');
+          background-size: 100%;
+          height: 115%;
+          width: auto;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: transparent;
+          background-size: cover;
+          background-position-x: -7px;
+          background-position-y: -50px;
+        }
+
       </style>
       <foreignObject x="0" y="0" width="1200" height="630">
         <div class="main-bg__container" style="background-image: url('bg-map_only_2.png'); background-size: 100%; height: 100%; background-repeat: no-repeat; background-position: center; background-color: #ffffff; border-radius: 25px;">
@@ -81,12 +135,15 @@
                 class="social-image__title title_two"
                 contenteditable
               >
-              Bridgeport, CT
+              Los Angeles, CA
               </h1>
             </div>
+            <div class="social-image__logo">
+              <img src="finance-strategists_logo_white.png">
+            </div>
           </div>
-          <div class="bg-map" style="border-radius: 0 25px 25px 0; overflow: hidden;">
-            <div style="background-image: url('modified_map.png'); background-size: 100%; height: 120%; width:120%; background-repeat: no-repeat; background-position: center; background-color: transparent; background-size: cover; background-position-x: 1px; background-position-y: -65px;"></div>
+          <div class="bg-map_container">
+            <div class="bg-map"></div>
           </div>
         </div>
       </foreignObject>
