@@ -1,0 +1,28 @@
+{
+  "name": "generated-social-images",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "browserify app.js -o bundle.js",
+    "watch": "watchify app.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jajair23/generated-social-images.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jajair23/generated-social-images/issues"
+  },
+  "homepage": "https://github.com/jajair23/generated-social-images#readme",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "watchify": "^4.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "process": "^0.11.10"
+  }
+}
