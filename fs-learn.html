@@ -13,7 +13,6 @@
 
       .social-image {
         width: 100%;
-        background: #f5f7fa;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
           Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
           'Segoe UI Symbol';
@@ -26,21 +25,33 @@
         height: 100%;
         justify-content: flex-end;
         align-items: flex-start;
-        padding: 100px 50px;
+        padding: 100px 50px 120px 500px;
       }
 
       .social-image__text {
-        color: #000000;
+        color: #ffffff;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 325px;
-        max-width: 500px;
+        width: 100%;
+        background: transparent;
+      }
+
+      .social-image__text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 100%;
+      }
+
+      .social-image__text-container .social-image__meta {
+        
       }
 
       .social-image__title {
-        font-size: 56px;
-        line-height: 68px;
+        font-size: 44px;
+        line-height: 55px;
         font-weight: 800;
         letter-spacing: -0.0125em;
         outline: none;
@@ -48,31 +59,41 @@
 
       .social-image__meta {
         font-weight: 500;
-        font-size: 24px;
-        line-height: 36px;
+        font-size: 20px;
+        line-height: 30px;
         outline: none;
         letter-spacing: -0.0125em;
+        margin-top: 20px;
       }
     </style>
-    <foreignObject x="0" y="0" width="1200" height="630" style="background-image: url('./img/background.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #ffffff;">
+    <foreignObject x="0" y="0" width="1200" height="630" style="background-image: url('./img/Social_Images-2.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: transparent;">
       <div class="social-image__html">
         <div class="social-image__text">
-          <h1
-            xmlns="http://www.w3.org/1999/xhtml"
-            class="social-image__title"
-            contenteditable
+          <svg
+            viewBox="0 0 525  325"
+            xmlns="http://www.w3.org/2000/svg"
+            class="social-image"
           >
-            Cost of Goods Sold (COGS)
-          </h1>
-          <p
-            xmlns="http://www.w3.org/1999/xhtml"
-            class="social-image__meta"
-            contenteditable
-          >
-            Written by True Tamplin, BSc, CEPF®
-          <br />
-            Updated on June 13, 2022
-          </p>
+          <foreignObject x="0" y="0" width="525" height="325">
+            <div class="social-image__text-container">
+              <h1
+                xmlns="http://www.w3.org/1999/xhtml"
+                class="social-image__title"
+                contenteditable
+              >
+                Cost of Goods Sold (COGS)
+              </h1>
+              <p
+                xmlns="http://www.w3.org/1999/xhtml"
+                class="social-image__meta"
+                contenteditable
+              >
+                Written by True Tamplin, BSc, CEPF®<br />Updated on June 13, 2022
+              </p>
+            </div>
+          </foreignObject>
+          </svg>
+            
         </div>
       </div>
     </foreignObject>
