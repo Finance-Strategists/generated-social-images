@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=development ./src/js/app.js -o dist",
-    "build:prod": "webpack ./src/js/app.js ./dist/bundle.js -p"
+    "build": "webpack --mode=development",
+    "build:prod": "webpack",
+    "start:dev": "webpack-dev-server --mode=development"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,15 @@
   },
   "homepage": "https://github.com/jajair23/generated-social-images#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "html2canvas": "^1.4.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "html2canvas": "^1.4.1"
+    "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
     "html2canvas": "^1.4.1"

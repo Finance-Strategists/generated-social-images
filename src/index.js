@@ -1,6 +1,7 @@
 import { location, modal, id01, staticMap, logo } from './dom-loader';
+import './fs-pwa-style.css';
 
-import './../../config.json';
+import '../config.json';
 import html2canvas from 'html2canvas';
 
 // const API_Key = config.API_KEY;
