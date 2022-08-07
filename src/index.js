@@ -1,4 +1,4 @@
-import { location, modal, id01, staticMap, logo } from './dom-loader';
+import { location, modal, id01, staticMap, logo, image_render } from './dom-loader';
 import './fs-pwa-style.css';
 
 import config from '../config.json';
@@ -12,23 +12,19 @@ logo.addEventListener("click", function() {
 
   const request = "https://maps.googleapis.com/maps/api/staticmap?center=" + location.innerHTML + "&zoom=10&size=1080x1080&key=" + API_Key;
 
-  // Remove modal content
-  while (modal.hasChildNodes()) {
-    modal.removeChild(modal.firstChild);
-    console.log('removed child')
-  }
-
   // Request a static map
   staticMap.src = request;
     
   html2canvas(document.body, {
+    default: false,
     allowTaint: true,
     foreignObjectRendering: true,
-    backgroundColor: "#000",
     proxy: null,
-    useCORS: true
+    useCORS: true,
+    scrollY: -window.scrollY
   }).then((canvas) => {
-    modal.appendChild(canvas);
+    var img = canvas.toDataURL();
+    image_render.src = img;
   });
 
   id01.style.display = "block";
