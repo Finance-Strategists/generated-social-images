@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>FS PWA</title>
+  </head>
+  <body>
+    <div class="wrapper" id="main-img">
+      <div class="social-image-wrapper">
+        <svg
+          viewBox="0 0 1200 630"
+          xmlns="http://www.w3.org/2000/svg"
+          class="social-image"
+        >
+          <foreignObject x="0" y="0" width="1200" height="630">
+            <div class="main-bg__container">
+              <div class="social-image__html">
+                <div class="social-image__text">
+                  <h1
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    class="social-image__title title_one"
+                    contenteditable
+                    id="service"
+                  >
+                    Financial Advisors in
+                  </h1>
+                  <h1
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    class="social-image__title title_two"
+                    contenteditable
+                    id="location"
+                  >
+                    Los Angeles, CA
+                  </h1>
+                </div>
+                <div class="social-image__logo">
+                  <img
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    src="./assets/finance-strategists_logo_white.png"
+                    id="logo"
+                  />
+                </div>
+              </div>
+              <div class="bg-map_container">
+                <div class="bg-map"><img id="static-map" /></div>
+              </div>
+            </div>
+          </foreignObject>
+        </svg>
+      </div>
+      <!-- Modal -->
+      <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+          <div class="w3-container">
+            <span
+              onclick="document.getElementById('id01').style.display='none'"
+              class="w3-button w3-display-topright"
+              >&times;
+            </span>
+            <div id="modal"><img src="./assets/finance-strategists_logo_white.png" alt="" id="image-render"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
