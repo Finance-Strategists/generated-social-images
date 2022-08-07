@@ -1,31 +1,50 @@
-import { location, modal, id01, staticMap, logo, image_render } from './dom-loader';
-import './fs-pwa-style.css';
+import {
+  location,
+  modal,
+  id01,
+  staticMap,
+  logo,
+  image_render,
+  body,
+} from "./dom-loader";
+import "./fs-pwa-style.css";
 
-import config from '../config.json';
-import html2canvas from 'html2canvas';
+import config from "../config.json";
+import domtoimage from "dom-to-image";
+import { saveAs } from "file-saver";
 
 const API_Key = config.API_KEY;
 
-logo.addEventListener("click", function() {
+const murationConfig = { attributes: true, childList: true, subtree: true };
 
-  console.log(location.innerHTML);
+const callback = (mutationList, observer) => {
+  for (const mutation of mutationList) {
+    if (mutation.type === "childList" || mutation.type === "attributes") {
 
-  const request = "https://maps.googleapis.com/maps/api/staticmap?center=" + location.innerHTML + "&zoom=10&size=1080x1080&key=" + API_Key;
+      domtoimage.toBlob(body).then(function (blob) {
+        var filename = location.innerHTML;
+        var cleanFilename = filename.toString().trim();
 
-  // Request a static map
-  staticMap.src = request;
-    
-  html2canvas(document.body, {
-    default: false,
-    allowTaint: true,
-    foreignObjectRendering: true,
-    proxy: null,
-    useCORS: true,
-    scrollY: -window.scrollY
-  }).then((canvas) => {
-    var img = canvas.toDataURL();
-    image_render.src = img;
-  });
+        window.saveAs(blob, cleanFilename + ".png");
+        observer.disconnect();
+      });
+    }
+  }
+};
 
-  id01.style.display = "block";
+logo.addEventListener("click", () => {
+  const observer = new MutationObserver(callback);
+
+  observer.observe(staticMap, murationConfig);
+
+  setTimeout(function () {
+    const request =
+      "https://maps.googleapis.com/maps/api/staticmap?center=" +
+      location.innerHTML +
+      "&zoom=10&size=1080x1080&key=" +
+      API_Key;
+
+    // Request a static map
+    staticMap.src = request;
+  }, 2000);
 });
