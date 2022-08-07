@@ -32,6 +32,12 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
     "html2canvas": "^1.4.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
