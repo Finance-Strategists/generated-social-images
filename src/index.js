@@ -1,35 +1,25 @@
 import {
   location,
-  modal,
-  id01,
   staticMap,
   logo,
-  image_render,
   body,
 } from "./dom-loader";
-import "./fs-pwa-style.css";
-
-import config from "../config.json";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
+import "./fs-pwa-style.css";
+import config from "../config.json";
 
-const API_Key = config.API_KEY;
-
-const murationConfig = { attributes: true, childList: true, subtree: true };
+const mutationConfig = { attributes: true, childList: true, subtree: true };
 
 const callback = (mutationList, observer) => {
-
   for (const mutation of mutationList) {
     if (mutation.type === "childList" || mutation.type === "attributes") {
-
       domtoimage.toBlob(body).then(function (blob) {
-        
-        var file_name = location.innerText;
-        var removeWhitespace = file_name.trim();
-        var removeSpecialCharacters = removeWhitespace.replace(/[^a-zA-Z ]/g, "");
-        var underScored = removeSpecialCharacters.replace(/ /g,"_");
-
-        window.saveAs(blob, underScored + ".png");
+        var fileName = location.innerText
+          .trim()
+          .replace(/[^a-zA-Z ]/g, "")
+          .replace(/ /g,"_");
+        saveAs(blob, fileName + ".png");
         observer.disconnect();
       });
     }
@@ -37,18 +27,19 @@ const callback = (mutationList, observer) => {
 };
 
 logo.addEventListener("click", () => {
-  const observer = new MutationObserver(callback);
-
-  observer.observe(staticMap, murationConfig);
-
-  setTimeout(function () {
-    const request =
-      "https://maps.googleapis.com/maps/api/staticmap?center=" +
-      location.innerText +
-      "&zoom=10&size=1080x1080&key=" +
-      API_Key;
-
-    // Request a static map
-    staticMap.src = request;
-  }, 2000);
+  let mutationRecord;
+  const observer = new MutationObserver(function(m) {
+    // Set mutation record reference
+    mutationRecord = m;
+  });
+  observer.observe(staticMap, mutationConfig);
+  // Set map source
+  staticMap.src =
+    "https://maps.googleapis.com/maps/api/staticmap?center=" +
+    location.innerText +
+    "&zoom=10&size=1080x1080&key=" +
+    config.API_KEY;
+  staticMap.onload = function() {
+    callback(mutationRecord, observer);
+  }
 });
