@@ -21,6 +21,7 @@
   "homepage": "https://github.com/jajair23/generated-social-images#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
     "html-loader": "^4.1.0",
