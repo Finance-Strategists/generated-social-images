@@ -4,13 +4,13 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: { index: "./src/index.js", learn: "./src/learn.js" },
   devServer: {
     open: true,
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -20,11 +20,11 @@ module.exports = {
           "style-loader",
           {
             loader: "css-loader",
-              options: {
+            options: {
               esModule: false,
             },
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.html$/i,
@@ -60,15 +60,24 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: path.resolve(__dirname, 'src/fs-learn.html'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/learn-fs-style.css'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/assets/background.jpg'), to: path.resolve(__dirname, 'dist/assets') }
+        {
+          from: path.resolve(__dirname, "src/fs-learn.html"),
+          to: path.resolve(__dirname, "dist"),
+        },
+        {
+          from: path.resolve(__dirname, "src/learn-fs-style.css"),
+          to: path.resolve(__dirname, "dist"),
+        },
+        {
+          from: path.resolve(__dirname, "src/assets/background.jpg"),
+          to: path.resolve(__dirname, "dist/assets"),
+        },
       ],
-    })
+    }),
   ],
   resolve: {
     fallback: {
-      "fs": false
+      fs: false,
     },
-  }
+  },
 };

@@ -46,3 +46,11 @@
   outline: none;
   letter-spacing: -0.0125em;
 }
+
+#download {
+  width: 200px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  display: block;
+}

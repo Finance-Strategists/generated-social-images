@@ -1,21 +1,18 @@
 import {
-  location,
-  staticMap,
-  logo,
   body,
+  content_title,
+  download
 } from "./dom-loader";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
-import "./fs-pwa-style.css";
-import config from "../config.json";
 
 const mutationConfig = { attributes: true, childList: true, subtree: true };
 
-const callback = (mutationList, observer) => {
+const learnCallback = (mutationList, observer) => {
   for (const mutation of mutationList) {
     if (mutation.type === "childList" || mutation.type === "attributes") {
       domtoimage.toBlob(body).then(function (blob) {
-        var fileName = location.innerText
+        var fileName = content_title.innerText
           .trim()
           .replace(/[^a-zA-Z ]/g, "")
           .replace(/ /g,"_");
@@ -26,20 +23,16 @@ const callback = (mutationList, observer) => {
   }
 };
 
-logo.addEventListener("click", () => {
+download.addEventListener("click", () => {
+  console.log('clicked')
   let mutationRecord;
   const observer = new MutationObserver(function(m) {
     // Set mutation record reference
     mutationRecord = m;
   });
-  observer.observe(staticMap, mutationConfig);
+  observer.observe(content_title, mutationConfig);
   // Set map source
-  staticMap.src =
-    "https://maps.googleapis.com/maps/api/staticmap?center=" +
-    location.innerText +
-    "&zoom=10&size=1080x1080&key=" +
-    config.API_KEY;
-  staticMap.onload = function() {
-    callback(mutationRecord, observer);
+  content_title.onload = function() {
+    learnCallback(mutationRecord, observer);
   }
 });
