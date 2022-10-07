@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -57,6 +58,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/fs-learn.html'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/learn-fs-style.css'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/assets/background.jpg'), to: path.resolve(__dirname, 'dist/assets') }
+      ],
+    })
   ],
   resolve: {
     fallback: {

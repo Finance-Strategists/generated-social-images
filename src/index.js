@@ -7,6 +7,7 @@ import {
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 import "./fs-pwa-style.css";
+import "./learn-fs-style.css";
 import config from "../config.json";
 
 const mutationConfig = { attributes: true, childList: true, subtree: true };
