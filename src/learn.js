@@ -20,7 +20,7 @@ const learnCallback = (mutationList, observer) => {
           .replace(/[^a-zA-Z ]/g, "")
           .replace(/ /g, "_");
         saveAs(blob, fileName + ".png");
-        // observer.disconnect();
+        observer.disconnect();
       });
     }
   }
