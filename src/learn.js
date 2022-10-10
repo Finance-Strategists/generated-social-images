@@ -12,17 +12,17 @@ const mutationConfig = {
 const learnCallback = (mutationList, observer) => {
   console.log("mutationList", mutationList);
 
-  for (const mutation of mutationList) {
-    if (mutation.type === "characterData") {
-      domtoimage.toBlob(body).then(function (blob) {
-        var fileName = content_title.innerText
-          .trim()
-          .replace(/[^a-zA-Z ]/g, "")
-          .replace(/ /g, "_");
-        saveAs(blob, fileName + ".png");
-        observer.disconnect();
-      });
-    }
+  const mutation = mutationList[0];
+
+  if (mutation.type === "characterData") {
+    domtoimage.toBlob(body).then(function (blob) {
+      var fileName = content_title.innerText
+        .trim()
+        .replace(/[^a-zA-Z ]/g, "")
+        .replace(/ /g, "_");
+      saveAs(blob, fileName + ".png");
+      observer.disconnect();
+    });
   }
 };
 
