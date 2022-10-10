@@ -28,11 +28,11 @@ const learnCallback = (mutationList, observer) => {
 
 let mutationRecord;
 
-const observer = new MutationObserver(learnCallback);
+const observer = new MutationObserver((m) =>{
+  mutationRecord = m;
+});
 
-observer.observe(content_title, mutationConfig);
-
-content_title.addEventListener('paste', () => {
+author.addEventListener('click', () => {
 
   observer.observe(content_title, mutationConfig);
 
