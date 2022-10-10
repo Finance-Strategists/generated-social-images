@@ -1,4 +1,4 @@
-import { body, content_title } from "./dom-loader";
+import { body, content_title, author } from "./dom-loader";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 
@@ -26,6 +26,16 @@ const learnCallback = (mutationList, observer) => {
   }
 };
 
+let mutationRecord;
+
 const observer = new MutationObserver(learnCallback);
 
 observer.observe(content_title, mutationConfig);
+
+content_title.addEventListener('paste', () => {
+
+  observer.observe(content_title, mutationConfig);
+
+  learnCallback(mutationRecord, observer);
+
+});
