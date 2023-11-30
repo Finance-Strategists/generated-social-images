@@ -4,7 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: { index: "./src/index.js", learn: "./src/learn.js" },
+  entry: { index: "./src/index.js", learn: "./src/learn.js", sf: "./src/singers-point.js"},
   devServer: {
     open: true,
   },
@@ -71,6 +71,14 @@ module.exports = {
         {
           from: path.resolve(__dirname, "src/assets/background.jpg"),
           to: path.resolve(__dirname, "dist/assets"),
+        },
+        {
+          from: path.resolve(__dirname, "src/singers-point.html"),
+          to: path.resolve(__dirname, "dist"),
+        },
+        {
+          from: path.resolve(__dirname, "src/singers-point-style.css"),
+          to: path.resolve(__dirname, "dist"),
         },
       ],
     }),
